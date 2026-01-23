@@ -15,7 +15,7 @@ public class JenkinsCiCdApplication {
     public String greetings(@PathVariable String name) {
         //Basant kumar hota
         //sarvindra kumar
-       name= name.split(" ")[0];
+       //name= name.split(" ")[0];
         return "Hello " + name + " Congratulations you have successfully completed Jenkins CI/CD demo !";
     }
 
