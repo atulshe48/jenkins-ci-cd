@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM eclipse-temurin:17
 WORKDIR /appContainer
 COPY ./target/jenkinsCiCd.jar /appContainer
 EXPOSE 8282

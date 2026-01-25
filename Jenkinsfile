@@ -8,7 +8,7 @@ pipeline{
     environment{
            APP_NAME = "spring-docker-cicd"
            RELEASE_NO= "1.0.0"
-           DOCKER_USER= "javatechie4u"
+           DOCKER_USER= "amshegokar"
            IMAGE_NAME= "${DOCKER_USER}"+"/"+"${APP_NAME}"
            IMAGE_TAG= "${RELEASE_NO}-${BUILD_NUMBER}"
     }
@@ -17,7 +17,7 @@ pipeline{
 
         stage("SCM checkout"){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/javatechie-devops/jenkins-ci-cd.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/atulshe48/jenkins-ci-cd.git']])
             }
         }
 
@@ -40,7 +40,7 @@ pipeline{
         stage("Deploy Image to Hub"){
             steps{
                 withCredentials([string(credentialsId: 'dp', variable: 'dp')]) {
-                 sh 'docker login -u javatechie4u -p ${dp}'
+                 sh 'docker login -u amshegokar -p ${dp}'
                  sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
                 }
             }
@@ -58,7 +58,7 @@ pipeline{
         <p>Build Number: ${BUILD_NUMBER}</p>
         <p>Check the <a href="${BUILD_URL}">console output</a>.</p>
     </body>
-</html>''', mimeType: 'text/html', replyTo: 'javatechie.learning@gmail.com', subject: 'Pipeline Status : ${BUILD_NUMBER}', to: 'javatechie.learning@gmail.com'
+</html>''', mimeType: 'text/html', replyTo: 'atulshe48@gmail.com', subject: 'Pipeline Status : ${BUILD_NUMBER}', to: 'atulshe48@gmail.com'
 
         }
     }
